@@ -17,7 +17,7 @@ export const generateSchematic = (sch: string, name: string) => {
     default: {
       Log.error('Invalid schematic name or options specified!');
       Log.log(
-        'Use format `mb generate <schematic> [options]` command or check our docs at https://embyconcept.com to learn more.\n\n',
+        'Use format `mb generate <schematic> [options]` command or check our docs at https://anchorsolutions.nl to learn more.\n\n',
         'Possible Schematics:\n',
         '- widget (alias: w)',
         '\n\n\n',

@@ -63,7 +63,7 @@ function (alias fn)   Generates a JavaScript/Typescript function`)
 
     default: {
       Log.error('Invalid or unspecified command!');
-      Log.log('Run `mb --help` command for instructions or check our docs at https://embyconcept.com to learn more.\n\n\n');
+      Log.log('Run `mb --help` command for instructions or check our docs at https://anchorsolutions.nl to learn more.\n\n\n');
     }
   }
 })();

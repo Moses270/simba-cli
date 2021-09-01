@@ -1,9 +1,9 @@
-import { copyFileSync } from 'fs-extra';
+const fs = require('fs-extra');
 
 [
     'package.json',
     'package-lock.json',
     'README.md'
 ].forEach(p => {
-    copyFileSync(`./${p}`, `./bin/${p}`);
+    fs.copyFileSync(`./${p}`, `./bin/${p}`);
 });
