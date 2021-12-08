@@ -17,7 +17,7 @@ export const generateModule = (sName: string) => {
   }
 
   const filenames = 'controller,service,route,validator'.split(',').map(n => {
-    return path.normalize(`${base}/${n}.${options.js ? 'js' : 'ts'}`);
+    return path.normalize(`${base}/${name}.${n}.${options.js ? 'js' : 'ts'}`);
   });
 
   if (existsSync(base)) {
@@ -28,6 +28,6 @@ export const generateModule = (sName: string) => {
   filenames.forEach(f => {
     ensureFileSync(f);
     writeFileSync(f, '');
-    console.log(`Created file: ${f.replaceAll('\\', '/')}`);
+    console.log(`Created file: ${f}`);
   });
 }
