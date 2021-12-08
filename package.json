@@ -1,6 +1,6 @@
 {
   "name": "@anchor-solutions-nl/as-cli",
-  "version": "0.0.3",
+  "version": "0.1.6",
   "description": "A simple CLI to handle most basic and everyday usage cli command wishes",
   "main": "index.js",
   "bin": {
@@ -12,7 +12,8 @@
     "build": "tsc",
     "build:w": "tsc -w",
     "in": "npm run build && npm install -g .",
-    "deploy": "npm run build && node copy && cd bin && npm publish --access=public"
+    "deploy": "npm run build && node copy && cd bin && npm publish --access=public",
+    "unpublish": "npm unpublish @anchor-solutions-nl/as-cli@0.1.5"
   },
   "repository": {
     "type": "git",

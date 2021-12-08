@@ -81,7 +81,7 @@ class _{{widgetName}}State extends State<{{widgetName}}>${opts.hooks ? routeAwar
   `;
 }
 
-// Example command: mb g w splash-screen --hooks --stateful
+// Example command: as g w splash-screen --hooks --stateful
 export const generateWidget = (name: string) => {
   const dir = cwd();
   const filename = path.normalize(`${dir}/${name}.dart`);

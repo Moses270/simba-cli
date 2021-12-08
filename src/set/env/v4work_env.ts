@@ -4,7 +4,7 @@ import { cwd } from 'process';
 import { readFileSync, writeFileSync } from 'fs';
 import { Log } from '../../log';
 
-// Example command: mb env v4work --prod
+// Example command: as env v4work --prod
 export const setV4WorkEnvironment = () => {
   const options: any = yargs.argv;
   const cwDir = cwd();

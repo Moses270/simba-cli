@@ -3,20 +3,34 @@
 import { Log } from './log';
 import yargs from 'yargs';
 import { generateSchematic } from './generate';
-import { embySetCommand } from './set';
+import { setProjectEnvironment } from './set';
 
 const options: any = yargs
-  .usage(`Usage: mb generate <schematics> <name> [options]
+  .usage(`Usage: as generate <schematics> <name> [options]
   
-  Schematics:
-widget (alias: w)     Generates a Flutter/Dart widget
-component (alias c)   Generates an angular component with all the default props and content
-class (alias cl)      Generates a JavaScript/Typescript class
-function (alias fn)   Generates a JavaScript/Typescript function`)
-  .usage('Usage: mb env flutter [options]')
+  schematics:
+    widget (alias: w)     Generates a Flutter/Dart widget
+    component (alias c)   Generates an angular component with all the default props and content
+    class (alias cl)      Generates a JavaScript/Typescript class
+    module (alias m)      Generates a node.js module with controller, service, route and validator
+    function (alias fn)   Generates a JavaScript/Typescript function
+
+  name: The name to assign newly generated schematic
+  \n\n
+    `)
+  .usage(`Usage: as env <project> [options]
+  project: The name/ID of project to be updated
+  \n\n
+  `)
   .option('st', {
     alias: 'stateful',
     describe: 'Used to generate a stateful schematic like a Stateful Widget',
+    type: 'boolean',
+    demandOption: false
+  })
+  .option('js', {
+    alias: 'javascript',
+    describe: 'Used to generate a schematic for JavaScript instead of the default Typescript',
     type: 'boolean',
     demandOption: false
   })
@@ -51,7 +65,7 @@ function (alias fn)   Generates a JavaScript/Typescript function`)
     }
 
     case 'env': {
-      embySetCommand(args[1]);
+      setProjectEnvironment(args[1]);
 
       break;
     }
@@ -63,7 +77,7 @@ function (alias fn)   Generates a JavaScript/Typescript function`)
 
     default: {
       Log.error('Invalid or unspecified command!');
-      Log.log('Run `mb --help` command for instructions or check our docs at https://anchorsolutions.nl to learn more.\n\n\n');
+      Log.log('Run `as --help` command for instructions or check our docs at https://anchorsolutions.nl to learn more.\n\n\n');
     }
   }
 })();

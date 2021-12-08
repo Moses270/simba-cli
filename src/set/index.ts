@@ -1,6 +1,6 @@
-import { setV4WorkEnvironment } from "./env/v4work_env";
+import { setV4WorkEnvironment } from './env/v4work_env';
 
-export const embySetCommand = (env: string) => {
+export const setProjectEnvironment = (env: string) => {
   switch (env.toLowerCase()) {
     case 'v4work': {
       setV4WorkEnvironment();
