@@ -9,8 +9,8 @@ export const setVtAppEnvironment = () => {
   const options: any = yargs.argv;
   const cwDir = cwd();
   const isProd = !!options.prod;
-  const deploymentVersion = options['deploy-version'];
-  const versionNumber = options['version-number'];
+  const deploymentVersion: string = options['deploy-version'];
+  const versionNumber: string = options['version-number'];
 
   // update config file
   try {
@@ -82,6 +82,32 @@ export const setVtAppEnvironment = () => {
       }
 
       writeFileSync(webPath, htmlCode.join('\n'));
+    }
+
+    // pubspec.yaml version update
+    if (versionNumber) {
+      const pubspecPath = path.normalize(cwDir + '/pubspec.yaml');
+      const content = readFileSync(pubspecPath).toString();
+      const lines = content.split('\n');
+      const versionMark = 'version: ';
+      let versionCode = versionNumber.split('.').join('');
+
+      if (versionCode.length < 5) {
+        versionCode = (versionCode + '00000').substring(0, 5);
+      }
+
+      for (let a = 0; a < lines.length; a++) {
+        const line = lines[a];
+
+        if (line.startsWith(versionMark)) {
+          const pos = line.indexOf(versionMark);
+
+          const newline = `${line.substring(0, pos + versionMark.length)}${versionNumber}+${versionCode}`;
+          lines[a] = newline;
+        }
+      }
+
+      writeFileSync(pubspecPath, lines.join('\n'));
     }
   } catch (e) {
     throw Error('Error while reading and updating V4Work config file');
