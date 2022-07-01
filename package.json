@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Tumba"
+    "url": "git+https://github.com/Moses270/simba-cli"
   },
   "keywords": [
     "cli",
@@ -28,9 +28,9 @@
   "author": "Moses Enomongale",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/Tumba"
+    "url": "https://github.com/Moses270/simba-cli/issues"
   },
-  "homepage": "https://gitlab.com/Tumba",
+  "homepage": "https://github.com/Moses270/simba-cli#readme",
   "dependencies": {
     "boxen": "^5.0.1",
     "chalk": "^4.1.2",
