@@ -1,6 +1,6 @@
 {
   "name": "simba-cli",
-  "version": "0.0.1",
+  "version": "0.0.14",
   "description": "A simple CLI to handle most basic and everyday usage cli command wishes",
   "main": "index.js",
   "bin": {
@@ -13,7 +13,7 @@
     "build:w": "tsc -w",
     "in": "npm run build && npm install -g .",
     "deploy": "node clearbin && npm run build && node copy && cd bin && npm publish --access=public",
-    "unpublish": "npm unpublish simba-cli@0.0.1"
+    "unpublish": "npm unpublish simba-cli@0.0.14"
   },
   "repository": {
     "type": "git",
