@@ -6,7 +6,7 @@ import { generateSchematic } from './generate';
 import { setProjectEnvironment } from './set';
 
 const options: any = yargs
-  .usage(`Usage: as generate <schematics> <name> [options]
+  .usage(`Usage: simba generate <schematics> <name> [options]
   
   schematics:
     widget (alias: w)     Generates a Flutter/Dart widget
@@ -18,7 +18,7 @@ const options: any = yargs
   name: The name to assign newly generated schematic
   \n\n
     `)
-  .usage(`Usage: as env <project> [options]
+  .usage(`Usage: simba env <project> [options]
   project: The name/ID of project to be updated
   \n\n
   `)
@@ -77,7 +77,7 @@ const options: any = yargs
 
     default: {
       Log.error('Invalid or unspecified command!');
-      Log.log('Run `as --help` command for instructions or check our docs at https://anchorsolutions.nl to learn more.\n\n\n');
+      Log.log('Run `simba --help` command for instructions or check our docs at https://embyconcept.com to learn more.\n\n\n');
     }
   }
 })();

@@ -1,11 +1,11 @@
 {
-  "name": "@anchor-solutions-nl/as-cli",
-  "version": "0.1.8",
+  "name": "simba-cli",
+  "version": "0.0.1",
   "description": "A simple CLI to handle most basic and everyday usage cli command wishes",
   "main": "index.js",
   "bin": {
-    "anchor": "./index.js",
-    "as": "./as.js"
+    "mb": "./bin/index.js",
+    "simba": "./bin/simba.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,25 +13,24 @@
     "build:w": "tsc -w",
     "in": "npm run build && npm install -g .",
     "deploy": "node clearbin && npm run build && node copy && cd bin && npm publish --access=public",
-    "unpublish": "npm unpublish @anchor-solutions-nl/as-cli@0.1.7"
+    "unpublish": "npm unpublish simba-cli@0.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Tumba/anchor-solutions-cli"
+    "url": "git+https://gitlab.com/Tumba"
   },
   "keywords": [
     "cli",
     "nodejs",
-    "as",
-    "anchor solutions",
-    "anchor"
+    "emby",
+    "simba"
   ],
   "author": "Moses Enomongale",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/Tumba/anchor-solutions-cli/-/issues"
+    "url": "https://gitlab.com/Tumba"
   },
-  "homepage": "https://gitlab.com/Tumba/anchor-solutions-cli/-/blob/master/README.md",
+  "homepage": "https://gitlab.com/Tumba",
   "dependencies": {
     "boxen": "^5.0.1",
     "chalk": "^4.1.2",
