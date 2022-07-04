@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { Log } from '../../log';
 
 // Example command: simba env vt-app --prod --deploy-version=2022070101 --version=4.2.3
-export const setVtAppEnvironment = () => {
+export const setSupplierAppEnvironment = () => {
   const options: any = yargs.argv;
   const cwDir = cwd();
   const isProd = !!options.prod;
@@ -14,22 +14,16 @@ export const setVtAppEnvironment = () => {
 
   // update config file
   try {
-    const configPath = path.normalize(cwDir + '/lib/shared/utils/config.dart');
+    const configPath = path.normalize(cwDir + '/lib/utils/serverconstants.dart');
     const file = readFileSync(configPath).toString();
     const lines = file.split('\n');
 
     // used to iterate through the config file and file marks for each update
     const marks = [
       {
-        mark: 'static bool isProd',
+        mark: 'static bool production',
         tranform: (cur: string, mark: string): string => {
           return cur.substring(0, cur.indexOf(mark) + mark.length) + ` = ${isProd};`;
-        }
-      },
-      {
-        mark: 'static String versionNumber',
-        tranform: (cur: string, mark: string): string => {
-          return versionNumber ? cur.substring(0, cur.indexOf(mark) + mark.length) + ` = '${versionNumber}';` : cur;
         }
       },
       {
@@ -110,7 +104,7 @@ export const setVtAppEnvironment = () => {
       writeFileSync(pubspecPath, lines.join('\n'));
     }
   } catch (e) {
-    throw Error('Error while reading and updating VT-App config file');
+    throw Error('Error while reading and updating Supplier app config files');
   }
 
   Log.info(`Environment now pointing to ${isProd ? 'production' : 'dev'}`);

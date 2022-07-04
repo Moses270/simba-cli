@@ -1,3 +1,4 @@
+import { setSupplierAppEnvironment } from './env/sp-app';
 import { setV4WorkEnvironment } from './env/v4work_env';
 import { setVtAppEnvironment } from './env/vt-app';
 
@@ -13,8 +14,13 @@ export const setProjectEnvironment = (env: string) => {
       break;
     }
 
+    case 'sp-app': case 'supplier-app': {
+      setSupplierAppEnvironment();
+      break;
+    }
+
     default: {
-      throw Error('A valid environment must be specified');
+      throw Error(`Project ${env} not found in commands list setup`);
     }
   }
 }
