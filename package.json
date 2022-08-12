@@ -1,6 +1,6 @@
 {
   "name": "simba-cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A simple CLI to handle most basic and everyday usage cli command wishes",
   "main": "index.js",
   "bin": {

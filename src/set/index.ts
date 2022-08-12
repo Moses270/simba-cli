@@ -1,26 +1,35 @@
+import { Log } from '../log';
 import { setSupplierAppEnvironment } from './env/sp-app';
 import { setV4WorkEnvironment } from './env/v4work_env';
 import { setVtAppEnvironment } from './env/vt-app';
 
-export const setProjectEnvironment = (env: string) => {
-  switch (env.toLowerCase()) {
-    case 'v4work': {
-      setV4WorkEnvironment();
-      break;
-    }
+const apps: { names: string[]; fn: () => void; }[] = [
+  {
+    names: ['v4work'],
+    fn: setV4WorkEnvironment
+  },
+  {
+    names: ['vt-app'],
+    fn: setVtAppEnvironment
+  },
+  {
+    names: ['sp-app', 'supplier-app'],
+    fn: setSupplierAppEnvironment
+  }
+];
 
-    case 'vt-app': {
-      setVtAppEnvironment();
-      break;
-    }
+export const setProjectEnvironment = (proj: string) => {
+  if (proj === 'apps') {
+    // list all supported applications here
+    Log.log('Env apps list');
+    Log.info(apps.map(a => a.names.join(' or ')).join('\n'));
+  } else {
+    const app = apps.find(a => a.names.includes(proj));
 
-    case 'sp-app': case 'supplier-app': {
-      setSupplierAppEnvironment();
-      break;
-    }
-
-    default: {
-      throw Error(`Project ${env} not found in commands list setup`);
+    if (app) {
+      app.fn();
+    } else {
+      throw Error(`Unsupported or invalid project identifier: ${proj}`);
     }
   }
 }

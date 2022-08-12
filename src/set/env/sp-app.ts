@@ -12,6 +12,8 @@ export const setSupplierAppEnvironment = () => {
   const deploymentVersion: string = options['deploy-version'];
   const versionNumber: string = options['version-number'];
 
+  console.log(`Options: deployment version=${deploymentVersion}; version number=${versionNumber}; production=${isProd}`);
+
   // update config file
   try {
     const configPath = path.normalize(cwDir + '/lib/utils/serverconstants.dart');
